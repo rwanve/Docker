@@ -32,17 +32,6 @@ pipeline {
              /* Build Docker Image locally */
              myImage = docker.build(dockerTag)
 
-             /* Push the Image to the Registry */
-             myImage.push()
           }
       }
     }
-    post {
-     always {
-	  sh "docker rmi ${params.REPO}:${env.BUILD_ID}"
-	   }
-    }
-  }
-  
- }
-}
